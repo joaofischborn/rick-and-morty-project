@@ -15,7 +15,8 @@
           color="primary"
           unelevated
           :disable="checkUsernameLength"
-           />
+          @click="onClick"
+          />
         </q-card-actions>
       </q-card>
     </div>
@@ -31,6 +32,12 @@ export default defineComponent({
     return {
       username: '',
     };
+  },
+  methods: {
+    onClick() {
+      localStorage.setItem('username', JSON.stringify(this.username));
+      this.$router.push('/');
+    },
   },
   computed: {
     checkUsernameLength() {
