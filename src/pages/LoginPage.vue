@@ -6,10 +6,16 @@
     <div class="login-form">
       <q-card>
         <q-card-section>
-            <q-input v-model="username" label="Username" outlined dense/>
-          </q-card-section>
-          <q-card-actions align="center">
-            <q-btn label="Login" type="submit" color="primary" unelevated/>
+          <q-input v-model="username" label="Username" outlined dense />
+        </q-card-section>
+        <q-card-actions align="center">
+          <q-btn
+          label="Login"
+          type="submit"
+          color="primary"
+          unelevated
+          :disable="checkUsernameLength"
+           />
         </q-card-actions>
       </q-card>
     </div>
@@ -25,6 +31,11 @@ export default defineComponent({
     return {
       username: '',
     };
+  },
+  computed: {
+    checkUsernameLength() {
+      return this.username.length < 4;
+    },
   },
 });
 </script>
